@@ -18,12 +18,13 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/users', [UserController::class, 'all'])->name('user.all');
 
-Route::get('/user/{user}', [UserController::class, 'show']);
+Route::get('/user/{user}', [UserController::class, 'show'])->name('user.single');
 
 Route::get('/user/email/{user:email}', [UserController::class, 'show']);
 
-Route::get('/user', [UserController::class, 'index']);
+Route::get('/user', [UserController::class, 'index'])->name('user.current');
 
 Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
 

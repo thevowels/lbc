@@ -18,4 +18,8 @@ class UserController extends Controller
     {
         return Inertia::render('User/Profile', ['user'=>$user, 'chirps'=>$user->chirps]);
     }
+    public function all(Request $request)
+    {
+        return Inertia::render('User/AllUsers',['users'=> User::all()]);
+    }
 }
