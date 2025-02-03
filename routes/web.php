@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 Route::get('/', function () {
@@ -20,7 +21,11 @@ Route::get('/', function () {
 
 Route::get('/users', [UserController::class, 'all'])->name('user.all');
 
-Route::get('/user/{user}', [UserController::class, 'show'])->name('user.single');
+Route::get('/user/{user}', [UserController::class, 'show'])
+            ->name('user.single')
+            ->missing(function (Request $request){
+                return Redirect::route('user.all');
+            });
 
 Route::get('/user/email/{user:email}', [UserController::class, 'show']);
 
