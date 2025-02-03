@@ -22,6 +22,9 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->appendToGroup('myMiddlewareGroup', [
             EnsureTokenIsValid::class
         ]);
+        $middleware->alias([
+            'token' => EnsureTokenIsValid::class
+        ]);
         //
     })
     ->withExceptions(function (Exceptions $exceptions) {

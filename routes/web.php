@@ -48,7 +48,7 @@ Route::redirect('/hello','/greet',301);
 
 Route::get('/greet', function(){
     return('Hello World');
-})->middleware(['auth','verified',EnsureTokenIsValid::class])->name('greet');
+})->middleware(['auth','verified','token'])->name('greet');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
