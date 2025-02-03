@@ -3,9 +3,12 @@
 use App\Http\Controllers\ChirpController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Models\User;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
+
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -16,9 +19,12 @@ Route::get('/', function () {
 });
 
 
-Route::get('/user/{id}', function (string $id) {
-    return 'User '.$id;
+Route::get('/user/{user}', function ( Request $request, User $user) {
+    return $user;
 });
+
+
+Route::get('/user', [UserController::class, 'index']);
 
 Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
 
