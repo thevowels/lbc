@@ -13,9 +13,9 @@ class EnsureTokenIsValid
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, string $token='token'): Response
+    public function handle(Request $request, Closure $next, string $token='token', string $secret='secret'): Response
     {
-        if($request->input('token') !== $token){
+        if($request->input('token') !== $token || $request->input('secret') !== $secret){
             return redirect('/dashboard');
         }
         return $next($request);
