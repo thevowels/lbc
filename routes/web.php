@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 use App\Enums\Category;
+use App\Http\Middleware\EnsureTokenIsValid;
 
 Route::get('/categories/{category}', function(Category $category) {
     return $category->value;
@@ -47,7 +48,7 @@ Route::redirect('/hello','/greet',301);
 
 Route::get('/greet', function(){
     return('Hello World');
-})->middleware(['auth','verified'])->name('greet');
+})->middleware(['auth','verified',EnsureTokenIsValid::class])->name('greet');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
