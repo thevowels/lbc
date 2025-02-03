@@ -21,6 +21,7 @@ Route::get('/', function () {
 
 Route::get('/user/{user}', [UserController::class, 'show']);
 
+Route::get('/user/email/{user:email}', [UserController::class, 'show']);
 
 Route::get('/user', [UserController::class, 'index']);
 
