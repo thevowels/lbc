@@ -19,9 +19,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/user/{user}', function ( Request $request, User $user) {
-    return $user;
-});
+Route::get('/user/{user}', [UserController::class, 'show']);
 
 
 Route::get('/user', [UserController::class, 'index']);
