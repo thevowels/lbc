@@ -20,7 +20,7 @@ class ChirpCreated
      */
     public function __construct(public Chirp $chirp)
     {
-        //
+        $this->chirp=$chirp;
     }
 
     /**
@@ -28,10 +28,13 @@ class ChirpCreated
      *
      * @return array<int, \Illuminate\Broadcasting\Channel>
      */
-    public function broadcastOn(): array
+    public function broadcastOn()
     {
-        return [
-            new PrivateChannel('channel-name'),
-        ];
+        return  new Channel('chirps');
     }
+    public function broadcastAs()
+    {
+        return 'chirp.created';
+    }
+
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ChirpCreated;
 use App\Models\Chirp;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -41,6 +42,7 @@ class ChirpController extends Controller
 
         $request->user()->chirps()->create($validated);
         
+
         return redirect(route('chirps.index'));
     }
 
