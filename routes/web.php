@@ -37,7 +37,7 @@ Route::get('/user/{user}', [UserController::class, 'show'])
                 return Redirect::route('user.all');
             });
 
-Route::get('/user/email/{user:email}', [UserController::class, 'show']);
+Route::get('/user/email/{user:email}', [UserController::class, 'show'])->name('user.emailSingle');
 
 Route::get('/user', [UserController::class, 'index'])->name('user.current');
 
