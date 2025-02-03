@@ -16,6 +16,14 @@ Route::get('/', function () {
 });
 
 
+Route::get('/user/{id}', function (string $id) {
+    return 'User '.$id;
+});
+
+Route::view('/welcome', 'welcome', ['name' => 'Taylor']);
+
+Route::redirect('/hello','/greet',301);
+
 Route::get('/greet', function(){
     return('Hello World');
 })->middleware(['auth','verified'])->name('greet');
