@@ -15,7 +15,6 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/user', [UserController::class, 'index']);
 
 Route::get('/greet', function(){
     return('Hello World');
