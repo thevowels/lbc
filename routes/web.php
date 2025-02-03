@@ -19,7 +19,7 @@ Route::get('/categories/{category}', function(Category $category) {
 Route::get('blahblah/{atoz}', function(User $atoz){
     return Inertia::render('User/Profile', ['user'=> $atoz, 'chirps'=>$atoz->chirps]);
 });
-
+ 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
