@@ -71,11 +71,7 @@ Route::resource('photos', PhotoController::class)
     });
 
 Route::get('/foo/bar', function(Request $request){
-    $request->whenHas('name', function(string $input){
-        echo $input;
-        echo "asdf";
-    });
-    return $request->input('name');
+    return $request->session()->all();
 
 });
 // ["text\/html","application\/xhtml+xml","image\/avif","image\/webp","image\/apng","application\/xml","*\/*","application\/signed-exchange"]
