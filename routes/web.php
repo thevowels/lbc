@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 
 use App\Enums\Category;
+use App\Http\Controllers\PhotoController;
 use App\Http\Middleware\EnsureTokenIsValid;
 
 Route::get('/categories/{category}', function(Category $category) {
@@ -64,5 +65,9 @@ Route::resource('chirps', ChirpController::class)
     ->only(['index', 'store', 'update', 'destroy'])
     ->middleware(['auth', 'verified']);
 
+Route::resource('photos', PhotoController::class)
+    ->missing(function (Request $request){
+        return Redirect::route('photos.index');
+    });
 
 require __DIR__.'/auth.php';
