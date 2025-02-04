@@ -71,8 +71,13 @@ Route::resource('photos', PhotoController::class)
     });
 
 Route::get('/foo/bar', function(Request $request){
-    return $request->fullUrlWithQuery(['type' => 'phone']);
-});
+    $request->whenHas('name', function(string $input){
+        echo $input;
+        echo "asdf";
+    });
+    return $request->input('name');
 
+});
+// ["text\/html","application\/xhtml+xml","image\/avif","image\/webp","image\/apng","application\/xml","*\/*","application\/signed-exchange"]
 
 require __DIR__.'/auth.php';
