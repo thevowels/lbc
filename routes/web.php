@@ -70,4 +70,9 @@ Route::resource('photos', PhotoController::class)
         return Redirect::route('photos.index');
     });
 
+Route::get('/foo/bar', function(Request $request){
+    return $request->fullUrl();
+});
+
+
 require __DIR__.'/auth.php';

@@ -15,7 +15,8 @@ class UserController extends Controller implements HasMiddleware
     public static function middleware()
     {
         return [
-            'token:abcd'
+            'token:abcd',
+
         ];
     }
 
