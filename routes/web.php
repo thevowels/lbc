@@ -81,7 +81,9 @@ Route::get('/foo/bar', function(Request $request){
 // ["text\/html","application\/xhtml+xml","image\/avif","image\/webp","image\/apng","application\/xml","*\/*","application\/signed-exchange"]
 
 Route::get('/blade', function(){
-    return view('welcome')->with('name','Mary James');
+    return view('welcome')
+        ->with('name','Mary James')
+        ->with('message', 'Alert Message POo');
 });
 
 require __DIR__.'/auth.php';

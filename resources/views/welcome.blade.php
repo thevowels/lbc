@@ -3,5 +3,6 @@
      Hello There {{$name}} <br/>
      Current time is {{ now() }}
      <br/>
-     <x-package-alert/>
+     <x-alert type="danger" :message="$message"/>
+    </br>
 </div>

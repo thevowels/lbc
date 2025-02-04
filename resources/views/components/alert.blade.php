@@ -1,4 +1,4 @@
-<div>
-    <!-- Smile, breathe, and go slowly. - Thich Nhat Hanh -->
-     Alert Component Blah
+<div class="alert alert-{{ $type }}">
+    {{ $message }}
 </div>
+

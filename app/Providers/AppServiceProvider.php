@@ -29,6 +29,6 @@ class AppServiceProvider extends ServiceProvider
         Vite::prefetch(concurrency: 3);
         Route::pattern('id', '[0-9]+');
         Route::model('atoz', User::class);
-        Blade::component('package-alert', Alert::class);
+        Blade::component('alert', Alert::class);
     }
 }
