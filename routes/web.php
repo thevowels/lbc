@@ -80,4 +80,8 @@ Route::get('/foo/bar', function(Request $request){
 });
 // ["text\/html","application\/xhtml+xml","image\/avif","image\/webp","image\/apng","application\/xml","*\/*","application\/signed-exchange"]
 
+Route::get('/blade', function(){
+    return view('welcome')->with('name','Mary James');
+});
+
 require __DIR__.'/auth.php';
