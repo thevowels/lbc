@@ -71,7 +71,7 @@ Route::resource('photos', PhotoController::class)
     });
 
 Route::get('/foo/bar', function(Request $request){
-    return $request->fullUrl();
+    return $request->fullUrlWithQuery(['type' => 'phone']);
 });
 
 
