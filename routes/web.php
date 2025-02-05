@@ -86,12 +86,13 @@ Route::get('/blade', function(){
 });
 
 Route::get('/eloquent', function(Request $request){
-    foreach(Chirp::cursor()->filter(function (Chirp $chirp){
-        return $chirp->user_id>=3;
-    }) as $flight){
-        dump($flight->attributestoArray());
-        
-    }
+    dump(Chirp::firstWhere('user_id',4));
+
+    dump('************************************');
+
+    dump(Chirp::findOrFail(8));
+    
+    dump(Chirp::where('user_id',3)->max('id'));
     return 'asdf';
 });
 
