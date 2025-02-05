@@ -86,12 +86,10 @@ Route::get('/blade', function(){
 });
 
 Route::get('/eloquent', function(Request $request){
-    Chirp::chunk(3,function (Collection $chirps) {
-        foreach($chirps as $chirp){
-            dump($chirp->attributesToArray());
-        }
-        dump('Iteration');
-    });
+    foreach(Chirp::lazy() as $flight){
+        dump($flight->message);
+        
+    }
     return 'asdf';
 });
 
