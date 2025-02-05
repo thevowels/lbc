@@ -86,8 +86,10 @@ Route::get('/blade', function(){
 });
 
 Route::get('/eloquent', function(Request $request){
-    foreach(Chirp::lazy() as $flight){
-        dump($flight->message);
+    foreach(Chirp::cursor()->filter(function (Chirp $chirp){
+        return $chirp->user_id>=3;
+    }) as $flight){
+        dump($flight->attributestoArray());
         
     }
     return 'asdf';
