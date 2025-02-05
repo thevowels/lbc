@@ -15,6 +15,7 @@ use App\Models\Chirp;
 use App\Enums\Category;
 use App\Http\Controllers\PhotoController;
 use App\Http\Middleware\EnsureTokenIsValid;
+use Illuminate\Database\Eloquent\Collection;
 
 Route::get('/categories/{category}', function(Category $category) {
     return $category->value;
@@ -85,23 +86,12 @@ Route::get('/blade', function(){
 });
 
 Route::get('/eloquent', function(Request $request){
-
-    $results = Chirp::where('user_id',2)->get();
-    foreach($results as $result){
-        dump($result->message);
-    }
-
-    $single = Chirp::where('user_id',2)->first();
-    dump($single->attributesToArray());
-    $single->message= "Updated Message";
-    dump($single->attributesToArray());
-
-    $FreshChirp = $single->fresh();
-    dump($FreshChirp->attributesToArray());
-    $single->refresh();
-    dump($single->attributesToArray());
-
-
+    Chirp::chunk(3,function (Collection $chirps) {
+        foreach($chirps as $chirp){
+            dump($chirp->attributesToArray());
+        }
+        dump('Iteration');
+    });
     return 'asdf';
 });
 
