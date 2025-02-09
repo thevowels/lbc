@@ -88,6 +88,17 @@ Route::get('/blade', function(){
         ->with('message', 'Alert Message POo');
 });
 
+Route::get('/magic', function(Request $request){
+    $user = User::factory()
+            ->hasChirps(5,[
+                'message'=>'My Message'
+            ])
+            ->create();
+    dump($user);
+    $users = User::with('chirps')->get();
+    dump($users->toArray());
+});
+
 Route::get('/eloquent', function(Request $request){
     
     //Just for temp
