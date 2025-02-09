@@ -17,6 +17,8 @@ use App\Http\Controllers\PhotoController;
 use App\Http\Middleware\EnsureTokenIsValid;
 use Illuminate\Database\Eloquent\Collection;
 
+use function PHPSTORM_META\map;
+
 Route::get('/categories/{category}', function(Category $category) {
     return $category->value;
 }); 
@@ -87,13 +89,14 @@ Route::get('/blade', function(){
 
 Route::get('/eloquent', function(Request $request){
     
-    $users = User::all()->append(['team', 'is_admin']);
+    $users = User::all();
     
-    $users = $users->find(2);
-    dump($users->getAttributes());
-    // foreach ($users as $user) {
-    //     dump( $user->getAttributes());
-    // }
+
+    dump($users->modelKeys());
+    foreach ($users as $user) {
+        dump($user->name);
+    
+    }
 
 
     
