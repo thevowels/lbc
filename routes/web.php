@@ -94,7 +94,9 @@ Route::get('/eloquent', function(Request $request){
 
     dump($users->modelKeys());
     foreach ($users as $user) {
+        dump($user->getAttributes());
         dump($user->name);
+        dump($user->info);
     
     }
 
