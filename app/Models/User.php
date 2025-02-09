@@ -75,6 +75,7 @@ class User extends Authenticatable
             get: fn( mixed $value, array $attributes) => (object) ['name'=>$attributes['name'], 'email'=> $attributes['email']],
         );
     }
-
     
+    protected $visible=['name','email','chirps'];
+
 }
