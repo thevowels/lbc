@@ -86,13 +86,19 @@ Route::get('/blade', function(){
 });
 
 Route::get('/eloquent', function(Request $request){
-    dump(Chirp::firstWhere('user_id',4));
 
-    dump('************************************');
-
-    dump(Chirp::findOrFail(8));
+    $chirp = Chirp::first();
+    $chirp->message="42";
+    dump($chirp->isDirty());
+    dump($chirp->isDirty('id'));
+    dump($chirp->isDirty('user_id'));
+    dump($chirp->isDirty('message'));
+    dump($chirp->getAttributes());
+    dump('***********');
+    dump($chirp->getOriginal());
     
-    dump(Chirp::where('user_id',3)->max('id'));
+    
+
     return 'asdf';
 });
 
