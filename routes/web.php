@@ -87,13 +87,13 @@ Route::get('/blade', function(){
 
 Route::get('/eloquent', function(Request $request){
     
-    $users = User::all()->reject(function (User $user){
-        return $user->id == 2;
-    });
-     
-    foreach ($users as $user) {
-        dump( $user->getAttributes());
-    }
+    $users = User::all()->append(['team', 'is_admin']);
+    
+    $users = $users->find(2);
+    dump($users->getAttributes());
+    // foreach ($users as $user) {
+    //     dump( $user->getAttributes());
+    // }
 
 
     
