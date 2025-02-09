@@ -86,17 +86,16 @@ Route::get('/blade', function(){
 });
 
 Route::get('/eloquent', function(Request $request){
-
-    $chirp = Chirp::first();
-    $chirp->message="42";
-    dump($chirp->isDirty());
-    dump($chirp->isDirty('id'));
-    dump($chirp->isDirty('user_id'));
-    dump($chirp->isDirty('message'));
-    dump($chirp->getAttributes());
-    dump('***********');
-    dump($chirp->getOriginal());
     
+    $users = User::all()->reject(function (User $user){
+        return $user->id == 2;
+    });
+     
+    foreach ($users as $user) {
+        dump( $user->getAttributes());
+    }
+
+
     
 
     return 'asdf';
