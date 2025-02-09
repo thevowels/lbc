@@ -15,6 +15,7 @@ use App\Models\Chirp;
 use App\Enums\Category;
 use App\Http\Controllers\PhotoController;
 use App\Http\Middleware\EnsureTokenIsValid;
+use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Collection;
 
 use function PHPSTORM_META\map;
@@ -89,10 +90,17 @@ Route::get('/blade', function(){
 
 Route::get('/eloquent', function(Request $request){
     
+    //Just for temp
+    // $newUsers = User::factory()->count(5)->make();
+
+    //Persistant data ( added to database);
+    // $newUsers = User::factory()->count(5)->create();
+
+
     $users = User::with('chirps')->get();
     // dump($users->toArray());
     // dump($users->toJson(JSON_PRETTY_PRINT));
-    return ($users);
+    dump ($users->toArray());
     // dump($users->attributesToArray());
 
     // foreach ($users as $user) {
