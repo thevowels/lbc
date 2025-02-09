@@ -89,18 +89,12 @@ Route::get('/blade', function(){
 
 Route::get('/eloquent', function(Request $request){
     
-    $users = User::all();
-    
+    $users = User::with('chirps')->first();
+    dump($users->toArray());
 
-    dump($users->modelKeys());
-    foreach ($users as $user) {
-        dump($user->getAttributes());
-        $user->name = $user->name;
-        $user->save();
-        dump($user->name);
-        dump($user->info);
-    
-    }
+    // foreach ($users as $user) {
+    //     dump($user->toArray());
+    // }
 
 
     
