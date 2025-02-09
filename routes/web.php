@@ -96,6 +96,11 @@ Route::get('/eloquent', function(Request $request){
     //Persistant data ( added to database);
     // $newUsers = User::factory()->count(5)->create();
 
+    $newUser = User::factory()
+            ->has(Chirp::factory()->count(5),'chirps')
+            ->create();
+    
+    dump($newUser->toArray());
 
     $users = User::with('chirps')->get();
     // dump($users->toArray());
