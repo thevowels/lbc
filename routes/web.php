@@ -89,8 +89,9 @@ Route::get('/blade', function(){
 
 Route::get('/eloquent', function(Request $request){
     
-    $users = User::with('chirps')->first();
+    $users = User::with('chirps')->get();
     dump($users->toArray());
+    // dump($users->attributesToArray());
 
     // foreach ($users as $user) {
     //     dump($user->toArray());
